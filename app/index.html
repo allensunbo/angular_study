@@ -2,15 +2,30 @@
 <html>
 
 <head>
-    <script src="lib/angular.js"></script>
+    <link rel="stylesheet" type="text/css" href="../bower_components/bg-splitter/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../bower_components/angular-treeview/css/angular.treeview.css">
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-material/angular-material.js"></script>
+    <script type="text/javascript" src="../bower_components/angular-treeview/angular.treeview.js"></script>
+    <script src="../bower_components/bg-splitter/js/splitter.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controller/single_portfolio/pit/summary.js"></script>
 </head>
 
 <body ng-app="studyApp">
-    <div ng-controller="PITSummaryCtrl as pitSum">
-        <h1>{{pitSum.message}}</h1>
-    </div>
+    <bg-splitter orientation="horizontal">
+        <bg-pane min-size="100">
+            <div ng-controller="StudyCtrl as studyCtrl">
+                <div data-angular-treeview="true" data-tree-id="studyList" data-tree-model="studyCtrl.studyCategories" data-node-id="id" data-node-label="name" data-node-children="items">
+                </div>
+            </div>
+        </bg-pane>
+        <bg-pane min-size="150">
+            <div ng-controller="PITSummaryCtrl as pitSum">
+                <h1>{{pitSum.message}}</h1>
+            </div>
+        </bg-pane>
+    </bg-splitter>
 
 </body>
 
